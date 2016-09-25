@@ -1,0 +1,14 @@
+#centerMe{
+    position: fi;
+    width: 600px !important;
+    margin: 0 auto !important;
+    float: none !important
+}
+#ordsky{
+    text-align: center;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 50px; 
+    
+}

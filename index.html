@@ -1,0 +1,34 @@
+<!Doctype html>
+<html>
+<head>
+    <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
+    <link rel="stylesheet" href="lib/animate/animate.css">
+    <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body ng-app="myApp">
+    <section ng-controller="myController"  class="animated fadeIn"  >
+            
+        <h1 style="text-align:center" id="mainHeader">Ordsky</h1>     
+        <form id="centerMe" class="form-group">           
+            <div class="input-group">       
+                <input class="form-control" ng-model="input"  type="text" placeholder="lim inn ordene med mellomrom som skille...">        
+                <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="lagOrdsky()">Ok!</button></span>     
+            </div>               
+        </form>
+            
+        <section id="ordsky" >       
+            <section ng-repeat="ord in ordsky ">       
+                <div class="animated bounceIn" style="float:left;" ng-style="{ 'color':ord.color, 'font-size':ord.fontSize,'margin-left': ord.margin +'px'}">{{ord.ord}}</div>    
+            </section>
+        </section>
+        
+    </section>
+</body>
+</html>
