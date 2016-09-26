@@ -3,7 +3,7 @@ app = angular.module('myApp',[]);
 
 app.controller('myController', ['$scope', function($scope){
     
-    $scope.lagOrdsky = function(){
+    $scope.makeWordsky = function(){
         var inputWords = {};
         $scope.wordsky = [];
         $scope.colors = [
@@ -33,7 +33,7 @@ app.controller('myController', ['$scope', function($scope){
                 array[j] = temp;
             }
                 return array;
-            } 
+        } 
         $scope.inputList = shuffleArray($scope.inputList);
         for(word in $scope.inputList){
             $scope.wordsky.push(
@@ -41,9 +41,7 @@ app.controller('myController', ['$scope', function($scope){
                     margin:Math.floor((Math.random() * 50) + 10),
                     word:$scope.inputList[word].word,fontSize: ($scope.inputList[word].number*4)+20 ,
                     color:$scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )]}
-            );
-           
+            );  
         }
     }
-
 }]);
