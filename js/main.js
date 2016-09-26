@@ -42,9 +42,7 @@ app.controller('myController', ['$scope', function($scope){
             }
         }
             
-        
-        
-        
+         
         $scope.inputListe = $scope.input.split(" ");
         multiplier = calcMultiplier($scope.inputListe);
         $scope.inputListe.forEach(function(x) { inputOrd[x] = (inputOrd[x] || 0)+1; });

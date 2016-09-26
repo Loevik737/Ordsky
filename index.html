@@ -23,10 +23,10 @@
                 <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="lagOrdsky()">Ok!</button></span>     
             </div>               
         </form>
-            
+           <input type="text"  ng-model="myFilter">  
         <section id="ordsky" >       
-            <section  data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 1080 }' ng-repeat="ord in ordsky ">       
-                <div class="animated bounceIn " id="word" ng-style="{ 'color':ord.color, 'font-size':ord.fontSize,'margin-left': ord.margin +'px'}">{{ord.ord}}</div>    
+            <section  data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 1080 }' ng-repeat="ord in ordsky | orderBy: myFilter">       
+                <div class="animated bounceIn " id="word" ng-style="{ 'color':ord.color, 'font-size':ord.fontSize,'margin-left': ord.margin +'px'}">{{ord.ord}}<p>{{ord.number}}</p></div>    
             </section>
         </section>
         
