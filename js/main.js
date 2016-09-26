@@ -4,6 +4,9 @@ app = angular.module('myApp',[]);
 
 app.controller('myController', ['$scope', function($scope){
     
+    
+
+    
     $scope.lagOrdsky = function(){
         var inputOrd = {};
         var multiplier = 0;
@@ -54,7 +57,7 @@ app.controller('myController', ['$scope', function($scope){
         
         for(ord in $scope.inputListe){
             $scope.ordsky.push(
-                {margin:Math.floor((Math.random() * 50) + 10),ord:$scope.inputListe[ord].ord,fontSize: $scope.inputListe[ord].number*multiplier ,color:$scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )]}
+                {margin:Math.floor((Math.random() * 50) + 10),ord:$scope.inputListe[ord].ord,fontSize: ($scope.inputListe[ord].number*3)+20 ,color:$scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )]}
             );
            
         }

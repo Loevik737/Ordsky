@@ -2,6 +2,7 @@
 <html>
 <head>
     <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+ 
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
@@ -24,8 +25,8 @@
         </form>
             
         <section id="ordsky" >       
-            <section ng-repeat="ord in ordsky ">       
-                <div class="animated bounceIn" style="float:left;" ng-style="{ 'color':ord.color, 'font-size':ord.fontSize,'margin-left': ord.margin +'px'}">{{ord.ord}}</div>    
+            <section  data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 1080 }' ng-repeat="ord in ordsky ">       
+                <div class="animated bounceIn " id="word" ng-style="{ 'color':ord.color, 'font-size':ord.fontSize,'margin-left': ord.margin +'px'}">{{ord.ord}}</div>    
             </section>
         </section>
         
