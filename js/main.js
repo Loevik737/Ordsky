@@ -1,16 +1,11 @@
 app = angular.module('myApp',[]);
 
 
-
 app.controller('myController', ['$scope', function($scope){
     
-    
-
-    
     $scope.lagOrdsky = function(){
-        var inputOrd = {};
-        var multiplier = 0;
-        $scope.ordsky = [];
+        var inputWords = {};
+        $scope.wordsky = [];
         $scope.colors = [
             "#ff0000",
             "#ff8000",
@@ -21,41 +16,31 @@ app.controller('myController', ['$scope', function($scope){
             "#4000ff",
             "#bf00ff",
             "#ff0080"
-        ]
-        
+        ];
+        $scope.inputList = $scope.input.split(" ");
+        $scope.inputList.forEach(function(x) {
+            inputWords[x] = (inputWords[x] || 0)+1;   
+        });
+        $scope.inputList = [];
+        for(word in inputWords){
+            $scope.inputList.push({word:word,number:inputWords[word] });
+        }
         function shuffleArray(array) {
-             for (var i = array.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
-            return array;
-        }
-        
-        function calcMultiplier(liste){
-            if(liste.length > 1000 ){
-                return 10;
-               }
-            else{
-                return 15;
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
             }
-        }
-            
-         
-        $scope.inputListe = $scope.input.split(" ");
-        multiplier = calcMultiplier($scope.inputListe);
-        $scope.inputListe.forEach(function(x) { inputOrd[x] = (inputOrd[x] || 0)+1; });
-        $scope.inputListe = [];
-         for( i in inputOrd){
-            $scope.inputListe.push({ord:i,number:inputOrd[i]});
-        }
-        $scope.inputListe = shuffleArray($scope.inputListe);
-       
-        
-        for(ord in $scope.inputListe){
-            $scope.ordsky.push(
-                {margin:Math.floor((Math.random() * 50) + 10),ord:$scope.inputListe[ord].ord,fontSize: ($scope.inputListe[ord].number*3)+20 ,color:$scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )]}
+                return array;
+            } 
+        $scope.inputList = shuffleArray($scope.inputList);
+        for(word in $scope.inputList){
+            $scope.wordsky.push(
+                {
+                    margin:Math.floor((Math.random() * 50) + 10),
+                    word:$scope.inputList[word].word,fontSize: ($scope.inputList[word].number*4)+20 ,
+                    color:$scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )]}
             );
            
         }

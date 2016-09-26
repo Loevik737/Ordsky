@@ -2,7 +2,6 @@
 <html>
 <head>
     <script src="lib/jquery/jquery-3.1.1.min.js"></script>
- 
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
@@ -15,18 +14,22 @@
 </head>
 <body ng-app="myApp">
     <section ng-controller="myController"  class="animated fadeIn"  >
-            
-        <h1 style="text-align:center" id="mainHeader">Ordsky</h1>     
+        <h1 style="text-align:center" id="mainHeader">WordSky</h1>     
         <form id="centerMe" class="form-group">           
             <div class="input-group">       
-                <input class="form-control" ng-model="input"  type="text" placeholder="lim inn ordene med mellomrom som skille...">        
-                <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="lagOrdsky()">Ok!</button></span>     
-            </div>               
-        </form>
-           <input type="text"  ng-model="myFilter">  
-        <section id="ordsky" >       
-            <section  data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 1080 }' ng-repeat="ord in ordsky | orderBy: myFilter">       
-                <div class="animated bounceIn " id="word" ng-style="{ 'color':ord.color, 'font-size':ord.fontSize,'margin-left': ord.margin +'px'}">{{ord.ord}}<p>{{ord.number}}</p></div>    
+                <input class="form-control" ng-model="input"  type="text" placeholder="paste a text...">        
+                <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="lagOrdsky()">Ok!</button></span> 
+            </div>  
+             <input class="form-control" type="text"  ng-model="myFilter" placeholder="search for a word...">
+             <select class="form-control" ng-model="myOrder">
+                    <option value="">No filter</option>
+                    <option value="word">Word</option>
+                    <option value="fontSize">Size</option>
+            </select>
+        </form>  
+        <section id="wordsky" >   
+            <section  data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 1080 }' ng-repeat="word in wordsky |filter:myFilter | orderBy: myOrder ">       
+                <div class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':word.fontSize,'margin-left': word.margin +'px'}">{{word.word}}<p>{{word.number}}</p></div>    
             </section>
         </section>
         
