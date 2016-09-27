@@ -23,10 +23,15 @@
                     <option value="word">Word</option>
                     <option value="fontSize">Size</option>
             </select>
+            <select ng-change="makeWordsky()" class="form-control" ng-model="colorFilter">
+                <option value="">Black</option>
+                <option value="random">Random</option>
+                <option ng-repeat="color in colors" value="{{color.hex}}">{{color.name}}</option>
+            </select>
         </form>  
         <section id="wordsky" >   
             <section ng-repeat="word in wordsky |filter:filter | orderBy: order ">       
-                <div class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':word.fontSize,'margin-left': word.margin +'px'}">{{word.word}}</div>    
+                <div ng-attr-title="Word count: {{(word.fontSize-20)/3}}" class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':word.fontSize,'margin-left': word.margin +'px'}">{{word.word}}</div>    
             </section>
         </section>
     </section>

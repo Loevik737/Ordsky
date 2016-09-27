@@ -1,27 +1,25 @@
 app = angular.module('myApp',[]);
 
-
 app.controller('myController', ['$scope', function($scope){
+
+    $scope.colors = [
+            {name:"red", hex:"#ff0000"},
+            {name:"orange", hex:"#ff8000"},
+            {name:"orange/brwn", hex:"#b1b11b"},
+            {name:"green", hex:"#40ff00"},
+            {name:"skyblue", hex:"#00ffff"},
+            {name:"blue", hex:"#0080ff"},
+            {name:"purple", hex:"#bf00ff"},
+            {name:"pink", hex:"#ff0080"}   
+        
+    ];
     
 $scope.makeWordsky = function(){
         $scope.wordsky = [];
         var inputWords = {};
-        var colors = [
-            "#ff0000",
-            "#ff8000",
-            "#b1b11b",
-            "#40ff00",
-            "#00ffff",
-            "#0080ff",
-            "#4000ff",
-            "#bf00ff",
-            "#ff0080"
-        ];
-      
         var cleanString = $scope.input.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-            cleanString = cleanString.replace(/(\r\n|\n|\r)/g," ");
+        cleanString = cleanString.replace(/(\r\n|\n|\r)/g," ");
         var inputList = cleanString.split(' ');
-    console.log(inputList)
         inputList.forEach(function(x) {
             inputWords[x] = (inputWords[x] || 0)+1;   
         });
@@ -43,8 +41,15 @@ $scope.makeWordsky = function(){
             $scope.wordsky.push(
                 {
                     margin:Math.floor((Math.random() * 50) + 10),
-                    word:inputList[word].word,fontSize: (inputList[word].number*4)+20 ,
-                    color:colors[Math.floor((Math.random() * (colors.length-1)) )]}
+                    word:inputList[word].word,fontSize: (inputList[word].number*3)+20 ,
+                    color: function(){
+                        if($scope.colorFilter == "random"){
+                            return $scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )].hex}
+                        else if($scope.colorFilter == ""){
+                            return "000000"}
+                        else return $scope.colorFilter
+                    }         
+                }
             );  
         }
     }
