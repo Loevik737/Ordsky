@@ -12,24 +12,23 @@
 <body ng-app="myApp">
     <section ng-controller="myController"  class="animated fadeIn"  >
         <h1 style="text-align:center" id="mainHeader">WordSky</h1>     
-        <form id="centerMe" class="form-group">           
+        <form id="centerMe" class="form-group">  
             <div class="input-group">       
-                <input class="form-control" ng-model="input"  type="text" placeholder="paste a text...">  
+                <textarea id="textArea" cols="70" rows="15" class="form-control" ng-model="input"  type="text" placeholder="paste a text...">  </textarea>
                 <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="makeWordsky()">Ok!</button></span> 
             </div>  
-             <input class="form-control" type="text"  ng-model="myFilter" placeholder="search for a word...">
-             <select class="form-control" ng-model="myOrder">
+             <input class="form-control" type="text"  ng-model="filter" placeholder="search for a word...">
+             <select class="form-control" ng-model="order">
                     <option value="">No filter</option>
                     <option value="word">Word</option>
                     <option value="fontSize">Size</option>
             </select>
         </form>  
         <section id="wordsky" >   
-            <section ng-repeat="word in wordsky |filter:myFilter | orderBy: myOrder ">       
-                <div class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':word.fontSize,'margin-left': word.margin +'px'}">{{word.word}}<p>{{word.number}}</p></div>    
+            <section ng-repeat="word in wordsky |filter:filter | orderBy: order ">       
+                <div class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':word.fontSize,'margin-left': word.margin +'px'}">{{word.word}}</div>    
             </section>
         </section>
-        
     </section>
 </body>
 </html>

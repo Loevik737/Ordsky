@@ -1,5 +1,4 @@
 #centerMe{
-    position: fi;
     width: 600px !important;
     margin: 0 auto !important;
     float: none !important
@@ -15,4 +14,9 @@
 #word{
     float:left;
 }
+#textArea{
+    width: 600px;
+    resize:vertical;
+}
+
 
