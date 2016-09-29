@@ -1,7 +1,7 @@
-app = angular.module('myApp',[]);
+app = angular.module('myApp',['ui.bootstrap']);
 
 app.controller('myController', ['$scope', function($scope){
-
+    
     $scope.colors = [
             {name:"red", hex:"#ff0000"},
             {name:"orange", hex:"#ff8000"},
@@ -11,10 +11,10 @@ app.controller('myController', ['$scope', function($scope){
             {name:"blue", hex:"#0080ff"},
             {name:"purple", hex:"#bf00ff"},
             {name:"pink", hex:"#ff0080"}   
-        
     ];
     
 $scope.makeWordsky = function(){
+    
         $scope.wordsky = [];
         var inputWords = {};
         var cleanString = $scope.input.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
@@ -41,7 +41,8 @@ $scope.makeWordsky = function(){
             $scope.wordsky.push(
                 {
                     margin:Math.floor((Math.random() * 50) + 10),
-                    word:inputList[word].word,fontSize: (inputList[word].number*3)+20 ,
+                    word:inputList[word].word,
+                    count:inputList[word].number,
                     color: function(){
                         if($scope.colorFilter == "random"){
                             return $scope.colors[Math.floor((Math.random() * ($scope.colors.length-1)) )].hex}
