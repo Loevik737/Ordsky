@@ -33,7 +33,7 @@
         </form> 
         <ul id="wordcloud" class="grid" masonry="true" >   
             <li ng-repeat="word in wordcloud |filter:filter | orderBy: order ">       
-                <div uib-tooltip="Word count: {{word.count}} " class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':(word.count*3)+20,'margin-left': word.margin +'px'}">{{word.word}}</div>    
+                <div uib-tooltip="Word count: {{word.count}} " class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':(word.count)+20}">{{word.word}}</div>    
             </li>
         </ul>
     </section>

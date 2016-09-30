@@ -11,9 +11,7 @@
     padding-top: 50px;  
 }
 
-#word{
-    float:left;
-}
+#word{margin-right: 4px;}
 #textArea{
     width: 600px;
     resize:vertical;
@@ -21,6 +19,7 @@
 
 
 .grid li{list-style: none;}
+.grid li div{margin: 0 !important;}
 
 /**** Transitions ****/
 

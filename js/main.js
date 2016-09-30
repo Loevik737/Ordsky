@@ -58,7 +58,7 @@ app.directive("masonry", function () {
 
 app.controller('myController', ['$scope', function($scope){
     
-    $scope.colors = [
+$scope.colors = [
             {name:"red", hex:"#ff0000"},
             {name:"orange", hex:"#ff8000"},
             {name:"orange/brwn", hex:"#b1b11b"},
@@ -73,15 +73,17 @@ $scope.makeWordcloud = function(){
     
         $scope.wordcloud = [];
         var inputWords = {};
-        var cleanString = $scope.input.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-        cleanString = cleanString.replace(/(\r\n|\n|\r)/g," ");
+        var cleanString = $scope.input.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()\r\n|\n|\r]/g,' ');
         var inputList = cleanString.split(' ');
         inputList.forEach(function(x) {
             inputWords[x] = (inputWords[x] || 0)+1;   
         });
         inputList = [];
         for(word in inputWords){
-            inputList.push({word:word,number:inputWords[word] });
+            if(word != ""){
+                inputList.push({word:word,number:inputWords[word] });
+            }
+            
         }
         function shuffleArray(array) {
             for (var i = array.length - 1; i > 0; i--) {
@@ -109,5 +111,5 @@ $scope.makeWordcloud = function(){
                 }
             );  
         }
-    }
+    };
 }]);
