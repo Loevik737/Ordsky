@@ -1,4 +1,4 @@
-# Wordsky
+# WordCloud
 This is an angular example of a wordSky
 
 #Libs
