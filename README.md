@@ -7,4 +7,4 @@ Bootstrap and animated css is used for styling.
 Masonry is used for a propper word positioning.
 
 #Licence
-This project, including all the lib files are under the MIT licence
+This project, including all the lib files, are under the MIT licence
