@@ -13,11 +13,11 @@
 </head>
 <body ng-app="myApp">
     <section ng-controller="myController"  class="animated fadeIn"  >
-        <h1 style="text-align:center" id="mainHeader">WordSky</h1>     
+        <h1 style="text-align:center" id="mainHeader">WordCloud<a href="https://github.com/Loevik737/WordCloud">(Github)</a></h1>     
         <form id="centerMe" class="form-group">  
             <div class="input-group">       
                 <textarea id="textArea" cols="70" rows="15" class="form-control" ng-model="input"  type="text" placeholder="paste a text...">  </textarea>
-                <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="makeWordsky()">Ok!</button></span> 
+                <span class="input-group-btn"><button class="btn btn-default btn-success" ng-click="makeWordcloud()">Ok!</button></span> 
             </div>  
              <input class="form-control" type="text"  ng-model="filter" placeholder="search for a word...">
              <select class="form-control" ng-model="order">
@@ -25,14 +25,14 @@
                     <option value="word">Word</option>
                     <option value="count">Size</option>
             </select>
-            <select ng-change="makeWordsky()" class="form-control" ng-model="colorFilter">
+            <select ng-change="makeWordcloud()" class="form-control" ng-model="colorFilter">
                 <option value="">Black</option>
                 <option value="random">Random</option>
                 <option ng-repeat="color in colors" value="{{color.hex}}">{{color.name}}</option>
             </select>
         </form> 
-        <ul id="wordsky" class="grid" masonry="true" >   
-            <li ng-repeat="word in wordsky |filter:filter | orderBy: order ">       
+        <ul id="wordcloud" class="grid" masonry="true" >   
+            <li ng-repeat="word in wordcloud |filter:filter | orderBy: order ">       
                 <div uib-tooltip="Word count: {{word.count}} " class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':(word.count*3)+20,'margin-left': word.margin +'px'}">{{word.word}}</div>    
             </li>
         </ul>

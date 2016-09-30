@@ -69,9 +69,9 @@ app.controller('myController', ['$scope', function($scope){
             {name:"pink", hex:"#ff0080"}   
     ];
     
-$scope.makeWordsky = function(){
+$scope.makeWordcloud = function(){
     
-        $scope.wordsky = [];
+        $scope.wordcloud = [];
         var inputWords = {};
         var cleanString = $scope.input.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
         cleanString = cleanString.replace(/(\r\n|\n|\r)/g," ");
@@ -94,7 +94,7 @@ $scope.makeWordsky = function(){
         } 
         inputList = shuffleArray(inputList);
         for(word in inputList){
-            $scope.wordsky.push(
+            $scope.wordcloud.push(
                 {
                     margin:Math.floor((Math.random() * 50) + 10),
                     word:inputList[word].word,
