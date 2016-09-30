@@ -30,10 +30,14 @@
                 <option value="random">Random</option>
                 <option ng-repeat="color in colors" value="{{color.hex}}">{{color.name}}</option>
             </select>
+            <div ng-show="cloudGenerated" class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>Success!</strong> Your text contained {{wordsCounted}} words, where {{uniqueWords}} were unique
+            </div>
         </form> 
         <ul id="wordcloud" class="grid" masonry="true" >   
             <li ng-repeat="word in wordcloud |filter:filter | orderBy: order ">       
-                <div uib-tooltip="Word count: {{word.count}} " class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':(word.count)+20}">{{word.word}}</div>    
+                <div uib-tooltip="Word count: {{word.count}} " class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':(word.count)+20,'margin-left':word.margin+'px'}">{{word.word}}</div>    
             </li>
         </ul>
     </section>

@@ -70,21 +70,24 @@ $scope.colors = [
     ];
     
 $scope.makeWordcloud = function(){
-    
+        $scope.cloudGenerated = false;
         $scope.wordcloud = [];
         var inputWords = {};
         var cleanString = $scope.input.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()\r\n|\n|\r]/g,' ');
         var inputList = cleanString.split(' ');
+        var wordsCounted = 0;
         inputList.forEach(function(x) {
-            inputWords[x] = (inputWords[x] || 0)+1;   
+            if(x != ""){
+            inputWords[x] = (inputWords[x] || 0)+1; 
+                wordsCounted++;
+                }
         });
+        $scope.wordsCounted = wordsCounted;
         inputList = [];
         for(word in inputWords){
-            if(word != ""){
-                inputList.push({word:word,number:inputWords[word] });
-            }
-            
+                inputList.push({word:word,number:inputWords[word] });   
         }
+        $scope.uniqueWords = inputList.length;
         function shuffleArray(array) {
             for (var i = array.length - 1; i > 0; i--) {
                 var j = Math.floor(Math.random() * (i + 1));
@@ -98,7 +101,7 @@ $scope.makeWordcloud = function(){
         for(word in inputList){
             $scope.wordcloud.push(
                 {
-                    margin:Math.floor((Math.random() * 50) + 10),
+                    margin:Math.floor((Math.random() * 75) + 5),
                     word:inputList[word].word,
                     count:inputList[word].number,
                     color: function(){
@@ -111,5 +114,6 @@ $scope.makeWordcloud = function(){
                 }
             );  
         }
+    $scope.cloudGenerated = true;
     };
 }]);
