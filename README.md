@@ -1,5 +1,5 @@
 # WordCloud
-This is an angular example of a wordSky
+This is an angular example of a word cloud
 
 #Libs
 I have primarly used angular for the functionality. 
