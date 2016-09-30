@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/masonry/jquery.masonry.min.js"></script>
     <script src="lib/UIB/ui-bootstrap-tpls-2.1.4.min.js"></script>
     <script src="js/main.js"></script>
 </head>
@@ -30,11 +31,11 @@
                 <option ng-repeat="color in colors" value="{{color.hex}}">{{color.name}}</option>
             </select>
         </form> 
-        <section id="wordsky"  >   
-            <section ng-repeat="word in wordsky |filter:filter | orderBy: order ">       
+        <ul id="wordsky" class="grid" masonry="true" >   
+            <li ng-repeat="word in wordsky |filter:filter | orderBy: order ">       
                 <div uib-tooltip="Word count: {{word.count}} " class="animated bounceIn " id="word" ng-style="{ 'color':word.color, 'font-size':(word.count*3)+20,'margin-left': word.margin +'px'}">{{word.word}}</div>    
-            </section>
-        </section>
+            </li>
+        </ul>
     </section>
 </body>
 </html>
